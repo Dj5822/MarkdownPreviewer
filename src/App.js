@@ -1,23 +1,47 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+
+class Preview extends React.Component {
+  render() {
+    return (
+      <div>
+        <p>Preview text</p>
+      </div>
+    );
+  }
+}
+
+class MarkdownPreviewer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      text: ""
+    };
+
+    this.updateText = this.updateText.bind(this);
+  }
+
+  updateText(event) {
+    
+  }
+
+  render() {
+    return (
+      <div>
+        <textarea id="editor" onChange={this.updateText}></textarea>
+        <Preview id="preview"></Preview>
+        <p>{this.state.text}</p>
+      </div>
+    );
+  }
+}
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MarkdownPreviewer />
     </div>
   );
 }
