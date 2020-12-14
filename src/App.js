@@ -1,47 +1,61 @@
 import './App.css';
 import React from 'react';
 
-class Preview extends React.Component {
-  render() {
-    return (
-      <div>
-        <p>Preview text</p>
-      </div>
-    );
-  }
-}
+import { Provider } from 'react-redux';
 
-class MarkdownPreviewer extends React.Component {
+/*
+The MarkdownEditor contains an editor.
+When the text in the editor is changed,
+then the text state should change.
+*/
+class MarkdownEditor extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      text: ""
+      editorText: ""
     };
-
     this.updateText = this.updateText.bind(this);
   }
 
   updateText(event) {
-    
+    this.setState({
+      editorText: event.target.value
+    });
   }
 
   render() {
     return (
       <div>
         <textarea id="editor" onChange={this.updateText}></textarea>
-        <Preview id="preview"></Preview>
-        <p>{this.state.text}</p>
       </div>
     );
   }
 }
 
+class MarkdownPreview extends React.Component {
+  constructor(props){
+    super(props);
+
+    this.state = {
+      previewText: ""
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <p>{this.state.previewText}</p>
+      </div>
+    );
+  }
+}
 
 function App() {
   return (
     <div className="App">
-      <MarkdownPreviewer />
+      <MarkdownEditor />
+      <MarkdownPreview id="preview"/>
     </div>
   );
 }
