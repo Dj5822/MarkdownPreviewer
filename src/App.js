@@ -1,4 +1,5 @@
 import './App.css';
+import { store } from './MarkdownStore.js';
 import React from 'react';
 
 import { Provider } from 'react-redux';
@@ -54,8 +55,10 @@ class MarkdownPreview extends React.Component {
 function App() {
   return (
     <div className="App">
-      <MarkdownEditor />
-      <MarkdownPreview id="preview"/>
+      <Provider store={store}>
+        <MarkdownEditor />
+        <MarkdownPreview id="preview"/>
+      </Provider>
     </div>
   );
 }
