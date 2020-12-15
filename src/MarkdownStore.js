@@ -2,6 +2,17 @@ import { createStore } from 'redux';
 
 const UPDATE = "UPDATE";
 
+const INITIALSTATE = "";
+
+const updatePreviewReducer = (state = INITIALSTATE, action) => {
+  switch (action.type) {
+    case UPDATE:
+      return action.text;
+    default:
+      return state;
+  }
+};
+
 function updatePreview(text) {
   return {
     type: UPDATE,
@@ -9,15 +20,6 @@ function updatePreview(text) {
   }
 };
 
-
-const updatePreviewReducer = (previousState = "", action) => {
-  switch (action.type) {
-    case UPDATE:
-      return [previousState, action.text];
-    default:
-      return previousState;
-  }
-};
-
 const store = createStore(updatePreviewReducer);
 export { store };
+export { updatePreview };
