@@ -1,5 +1,10 @@
 import React from 'react';
 
+import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
+import { store } from './MarkdownStore.js';
+import {updatePreview} from './MarkdownStore.js';
+
 /*
 The MarkdownEditor contains an editor.
 When the text in the editor is changed,
@@ -8,17 +13,11 @@ then the text state should change.
 class Editor extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      editorText: ""
-    };
     this.updateText = this.updateText.bind(this);
   }
 
   updateText(event) {
-    this.setState({
-      editorText: event.target.value
-    });
+    this.props.dispatchText(event.target.value);
   }
 
   render() {
@@ -30,4 +29,24 @@ class Editor extends React.Component {
   }
 }
 
-export default Editor;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatchText: (text) => {
+      dispatch(updatePreview(text));
+    }
+  }
+};
+
+const EditorContainer = connect(null, mapDispatchToProps)(Editor);
+
+class EditorWrapper extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <EditorContainer />
+      </Provider>
+    );
+  }
+}
+
+export default EditorWrapper;

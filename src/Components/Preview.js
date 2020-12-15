@@ -1,17 +1,33 @@
 import React from 'react';
 
-class Preview extends React.Component {
-  constructor(props){
-    super(props);
-  }
+import { Provider } from 'react-redux';
+import { connect } from 'react-redux';
+import {store} from './MarkdownStore.js';
 
+class Preview extends React.Component {
   render() {
     return (
       <div>
-        <p>{this.props.text}</p>
+        <p id="preview">{this.props.text}</p>
       </div>
     );
   }
 }
 
-export default Preview;
+const mapStateToProps = (state) => {
+  return state;
+};
+
+const PreviewContainer = connect(mapStateToProps)(Preview);
+
+class PreviewWrapper extends React.Component {
+  render() {
+    return (
+      <Provider store={store}>
+        <PreviewContainer />
+      </Provider>
+    );
+  }
+}
+
+export default PreviewWrapper;

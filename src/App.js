@@ -1,12 +1,12 @@
 import './App.css';
-import Preview from './Components/Preview.js';
-import Editor from './Components/Editor.js';
+import PreviewWrapper from './Components/Preview.js';
+import EditorWrapper from './Components/Editor.js';
 
 function App() {
   return (
     <div className="App">
-      <Editor />
-      <Preview id="preview"/>
+      <EditorWrapper />
+      <PreviewWrapper />
     </div>
   );
 }

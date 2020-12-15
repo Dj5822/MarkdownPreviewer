@@ -7,7 +7,7 @@ const INITIALSTATE = "";
 const updatePreviewReducer = (state = INITIALSTATE, action) => {
   switch (action.type) {
     case UPDATE:
-      return action.text;
+      return {text: action.text};
     default:
       return state;
   }
