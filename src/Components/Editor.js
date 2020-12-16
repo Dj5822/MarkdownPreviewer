@@ -13,20 +13,43 @@ then the text state should change.
 class Editor extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      text: ""
+    };
     this.updateText = this.updateText.bind(this);
   }
 
-  updateText(event) {
+  sendHtml(newText){
+    this.setState({text: newText});
     const marked = require("marked");
-    const html = marked(event.target.value, {gfm: true});
+    const html = marked(newText, {gfm: true});
     this.props.dispatchText(html);
+  }
+
+  updateText(event) {
+    var newText = event.target.value;
+    this.sendHtml(newText);
+  }
+
+  componentDidMount() {
+    var newText = "# Test Large Heading \n" +
+    "## Test Smaller Heading \n" +
+    "[a link](www.google.com), \n" +
+    "inline code: `<div></div>`, \n" +
+    "a code block: \n" +
+    "```<p>test</p>``` \n" +
+    "- a list item, \n" +
+    "> a blockquote, \n" +
+    " ![an image](https://static.wikia.nocookie.net/kaguyasama-wa-kokurasetai/images/d/d0/005-55.png/revision/latest?cb=20190127162604), \n" +
+    " and **bolded text**";
+    this.sendHtml(newText);
   }
 
   render() {
     return (
       <div>
         <h1>Editor</h1>
-        <textarea id="editor" onChange={this.updateText}></textarea>
+        <textarea id="editor" onChange={this.updateText} value={this.state.text}></textarea>
       </div>
     );
   }
