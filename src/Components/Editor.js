@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { store } from './MarkdownStore.js';
 import {updatePreview} from './MarkdownStore.js';
 
+import '../Style/Editor.css'
+
 /*
 The MarkdownEditor contains an editor.
 When the text in the editor is changed,
@@ -40,15 +42,15 @@ class Editor extends React.Component {
     "```<p>test</p>``` \n" +
     "- a list item, \n" +
     "> a blockquote, \n" +
-    " ![an image](https://static.wikia.nocookie.net/kaguyasama-wa-kokurasetai/images/d/d0/005-55.png/revision/latest?cb=20190127162604), \n" +
-    " and **bolded text**";
+    "![an image](https://static.wikia.nocookie.net/kaguyasama-wa-kokurasetai/images/d/d0/005-55.png/revision/latest?cb=20190127162604), \n" +
+    "and **bolded text**";
     this.sendHtml(newText);
   }
 
   render() {
     return (
-      <div>
-        <h1>Editor</h1>
+      <div id="editor-div">
+        <h1 className="header">Editor</h1>
         <textarea id="editor" onChange={this.updateText} value={this.state.text}></textarea>
       </div>
     );

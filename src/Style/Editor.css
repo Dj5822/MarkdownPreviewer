@@ -1,0 +1,21 @@
+#editor-div {
+  width: 50vw;
+  height: 100vh;
+  border-style: solid;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #666869;
+  color: white;
+}
+
+#editor {
+  width: 48vw;
+  height: 80vh;
+  background-color: #2B2B2B;
+  color: white;
+}
+
+.header {
+  border-style: solid;
+  text-align: center;
+}

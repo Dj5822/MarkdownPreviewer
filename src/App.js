@@ -1,4 +1,4 @@
-import './App.css';
+import './Style/App.css';
 import PreviewWrapper from './Components/Preview.js';
 import EditorWrapper from './Components/Editor.js';
 

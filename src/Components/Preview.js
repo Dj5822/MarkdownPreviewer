@@ -4,11 +4,13 @@ import { Provider } from 'react-redux';
 import { connect } from 'react-redux';
 import {store} from './MarkdownStore.js';
 
+import '../Style/Preview.css';
+
 class Preview extends React.Component {
   render() {
     return (
-      <div>
-        <h1>Preview</h1>
+      <div id="preview-div">
+        <h1 className="header">Preview</h1>
         <div id="preview" dangerouslySetInnerHTML={{__html: this.props.text}} />
       </div>
     );

@@ -1,0 +1,12 @@
+#preview-div {
+  width: 50vw;
+  height: 100vh;
+  border-style: solid;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.header {
+  border-style: solid;
+  text-align: center;
+}
