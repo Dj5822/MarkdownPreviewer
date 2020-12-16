@@ -17,7 +17,9 @@ class Editor extends React.Component {
   }
 
   updateText(event) {
-    this.props.dispatchText(event.target.value);
+    const marked = require("marked");
+    const html = marked(event.target.value, {gfm: true});
+    this.props.dispatchText(html);
   }
 
   render() {

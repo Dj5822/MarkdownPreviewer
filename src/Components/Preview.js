@@ -7,9 +7,7 @@ import {store} from './MarkdownStore.js';
 class Preview extends React.Component {
   render() {
     return (
-      <div>
-        <p id="preview">{this.props.text}</p>
-      </div>
+        <div id="preview" dangerouslySetInnerHTML={{__html: this.props.text}} />
     );
   }
 }
