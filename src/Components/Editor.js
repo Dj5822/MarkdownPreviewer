@@ -24,7 +24,7 @@ class Editor extends React.Component {
   sendHtml(newText){
     this.setState({text: newText});
     const marked = require("marked");
-    const html = marked(newText, {gfm: true});
+    const html = marked(newText, {gfm: true, breaks: true});
     this.props.dispatchText(html);
   }
 
@@ -37,13 +37,16 @@ class Editor extends React.Component {
     var newText = "# Test Large Heading \n" +
     "## Test Smaller Heading \n" +
     "[a link](www.google.com), \n" +
-    "inline code: `<div></div>`, \n" +
+    "inline code: `<p>test</p>`, \n" +
     "a code block: \n" +
-    "```<p>test</p>``` \n" +
+    "```javascript \n" +
+    "var test = 5; \n" +
+    "var test2 = 1; \n" +
+    "``` \n" +
     "- a list item, \n" +
     "> a blockquote, \n" +
-    "![an image](https://static.wikia.nocookie.net/kaguyasama-wa-kokurasetai/images/d/d0/005-55.png/revision/latest?cb=20190127162604), \n" +
-    "and **bolded text**";
+    "and **bolded text**\n" +
+    "![an image](https://static.wikia.nocookie.net/kaguyasama-wa-kokurasetai/images/d/d0/005-55.png/revision/latest?cb=20190127162604)";
     this.sendHtml(newText);
   }
 
